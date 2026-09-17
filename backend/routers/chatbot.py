@@ -42,6 +42,7 @@ from modules.risk_aware_compression import RiskAwareCompression, CompressionLeve
 from modules.semantic_safety_guard import SemanticSafetyGuard
 from modules.context_recovery import ContextRecovery
 from modules.semantic_response_cache import semantic_cache
+from modules.neurosymbolic_reasoning import process_query as ns_process_query
 
 router = APIRouter()
 
@@ -297,7 +298,7 @@ def _build_context(selected_chunks: List[dict]) -> str:
     return "\n\n".join(f"[{c['title']}]\n{c['content']}" for c in selected_chunks)
 
 
-def _generate(query: str, context: str, history_payload: list) -> str:
+def _generate(query: str, context: str, history_payload: list, structured_block: Optional[str] = None) -> str:
     system_prompt = (
         "You are the NumeriX Assistant, a helpful tutor embedded in a "
         "numerical methods web app for a Numerical Analysis course. "
@@ -308,6 +309,8 @@ def _generate(query: str, context: str, history_payload: list) -> str:
         "app, politely say so and redirect to what you can help with.\n\n"
         f"Reference context:\n{context}"
     )
+    if structured_block:
+        system_prompt += f"\n\n{structured_block}"
     model = genai.GenerativeModel(
         model_name=CHAT_MODEL,
         system_instruction=system_prompt,
@@ -334,6 +337,12 @@ class ChatInput(BaseModel):
     max_recovery_attempts: Optional[int] = 1  # caps extra Gemini calls
     use_cache: Optional[bool] = False
     cache_threshold: Optional[float] = None
+    # New: neurosymbolic reasoning (opt-in, default OFF). When enabled, math/
+    # numerical/logic queries get parsed into a structured JSON (values,
+    # operations, relationships, symbolic_expression) that is appended to the
+    # system prompt alongside the ACW context. User still gets a normal
+    # answer; the structured form is only logged for evaluation.
+    use_neurosymbolic: Optional[bool] = False
 
 
 @router.post("/ask")
@@ -351,6 +360,19 @@ def ask(data: ChatInput):
         
         q_embed = _embed_query(data.message)
 
+        # Step 0: Structured/neurosymbolic reasoning (opt-in). Deterministic,
+        # no extra LLM call — just parses the query into values/operations/
+        # relationships/symbolic_expression before Gemini ever sees it. Done
+        # before the cache check so it's populated even on a cache hit.
+        neurosymbolic_info = None
+        structured_block = None
+        if data.use_neurosymbolic:
+            detected, structured, structured_block = ns_process_query(data.message)
+            neurosymbolic_info = {
+                "detected_as_math_or_logic": detected,
+                "structured": structured,
+            }
+
         if data.use_cache:
             cached, similarity = semantic_cache.find_similar(q_embed, data.cache_threshold)
             if cached is not None:
@@ -361,6 +383,7 @@ def ask(data: ChatInput):
                     "risk_assessment": cached.risk_assessment,
                     "safety_report": cached.safety_report,
                     "recovery": cached.recovery,
+                    "neurosymbolic": neurosymbolic_info,
                     "from_cache": True,
                     "cache_similarity": round(similarity, 4),
                 }
@@ -417,7 +440,7 @@ def ask(data: ChatInput):
 
         # Step 5: Build context from selected chunks and generate the answer
         context = _build_context(selected_chunks)
-        reply_text = _generate(data.message, context, history_payload)
+        reply_text = _generate(data.message, context, history_payload, structured_block)
 
         # Step 6: Evaluate confidence and recover (retry with less compression)
         # if the answer looks weak. Bounded by max_recovery_attempts so a bad
@@ -440,7 +463,7 @@ def ask(data: ChatInput):
                     scoring_mode=data.scoring_mode or "hybrid",
                 )
                 context = _build_context(selected_chunks)
-                reply_text = _generate(data.message, context, history_payload)
+                reply_text = _generate(data.message, context, history_payload, structured_block)
                 confidence, score, eval_meta = _recovery.evaluate_response_quality(
                     data.message, reply_text, context
                 )
@@ -484,6 +507,7 @@ def ask(data: ChatInput):
 
         return {
             "reply": reply_text,
+            "neurosymbolic": neurosymbolic_info,
             "sources": [c["title"] for c in selected_chunks],
             "acw_metrics": {
                 "strategy": strategy,

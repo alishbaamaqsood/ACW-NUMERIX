@@ -1,0 +1,582 @@
+[
+  {
+    "query": "What is the Bisection method?",
+    "strategy": "baseline",
+    "answer": "The **Bisection method** is a bracketing numerical method used to find the roots of an equation of the form $f(x) = 0$ (available in NumeriX under the **Root Finder** module, Labs 4-5, via the `/api/roots` endpoint). \n\nHere is how it works:\n1. **Bracketing Interval:** It requires an initial interval $[a, b]$ where the function changes signs, meaning $f(a)$ and $f(b)$ have opposite signs ($f(a) \\cdot f(b) < 0$). By the Intermediate Value Theorem, at least one root must exist within this interval.\n2. **Bisecting:** The method repeatedly halves the interval by computing the midpoint:\n   $$c = \\frac{a + b}{2}$$\n3. **Checking and Updating:** It evaluates $f(c)$. If $f(c)$ is close enough to zero, $c$ is the root. Otherwise, it replaces either $a$ or $b$ with $c$ (depending on which side has the sign change) to maintain a valid bracketing interval for the next iteration.\n\nEach step narrows down the possible location of the root by half, making it reliable and guaranteed to converge if the function is continuous on the interval, though it converges more slowly than methods like Newton-Raphson. In NumeriX, running the Bisection method will generate a complete iteration table tracking the approximate error at each step!",
+    "acw_metrics": {
+      "strategy": "baseline",
+      "chunks_retrieved": 3,
+      "chunks_selected": 3,
+      "tokens_before": 288,
+      "tokens_after": 288,
+      "token_reduction_pct": 0.0,
+      "scoring_mode": "baseline",
+      "alpha_used": null
+    },
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately explains the Bisection method using both the reference material and general mathematical knowledge."
+  },
+  {
+    "query": "How does Newton-Raphson converge?",
+    "strategy": "baseline",
+    "answer": "The **Newton-Raphson** method is one of our powerful root-finding tools available in the NumeriX Root Finder module (Labs 4–5). \n\nTo use Newton-Raphson, you provide the function $f(x)$, its derivative $f'(x)$, and an initial guess $x_0$. The method converges **quadratically** near the root. \n\n**What does quadratic convergence mean?**\nPractically, it means that the number of accurate decimal places roughly doubles with each successive iteration, making it much faster than bracketing methods like Bisection or False Position (Regula Falsi)—provided your initial guess $x_0$ is sufficiently close to the actual root. \n\nIn the NumeriX app, when you run this method via the `/api/roots` endpoint, you will see an iteration table tracking the progress and approximate error at each step, along with a live chart of the convergence.\n\nLet me know if you'd like to explore how to set up a function for it or compare it with other root-finding methods!",
+    "acw_metrics": {
+      "strategy": "baseline",
+      "chunks_retrieved": 3,
+      "chunks_selected": 3,
+      "tokens_before": 259,
+      "tokens_after": 259,
+      "token_reduction_pct": 0.0,
+      "scoring_mode": "baseline",
+      "alpha_used": null
+    },
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately states that Newton-Raphson converges quadratically near the root based on the reference material, while providing appropriate context."
+  },
+  {
+    "query": "Why is RK4 more accurate than Euler?",
+    "strategy": "baseline",
+    "answer": "As the NumeriX Assistant, I'd be happy to explain that!\n\nIn our **ODE Solver (Labs 11-12)** module, **4th Order Runge-Kutta (RK4)** is generally much more accurate than Euler's Method for a given step size $h$ because of how it evaluates the slope:\n\n* **Euler's Method** only evaluates the slope ($f(x, y)$) at the *beginning* of the step and assumes it remains constant across the entire interval. This leads to rapid accumulation of truncation error.\n* **RK4**, on the other hand, evaluates the slope at **four distinct points** per step (the beginning, two midpoints, and the end). It then computes a weighted average of these four slopes to extrapolate the next point. \n\nThis multi-point evaluation allows RK4 to effectively cancel out lower-order error terms (matching the accuracy of a 4th-order Taylor series expansion), resulting in a much closer approximation to the true curve of the differential equation $\\frac{dy}{dx} = f(x, y)$. \n\nYou can test this out yourself using our `/api/ode` endpoint! Let me know if you have questions about any other methods in NumeriX.",
+    "acw_metrics": {
+      "strategy": "baseline",
+      "chunks_retrieved": 3,
+      "chunks_selected": 3,
+      "tokens_before": 283,
+      "tokens_after": 283,
+      "token_reduction_pct": 0.0,
+      "scoring_mode": "baseline",
+      "alpha_used": null
+    },
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately and comprehensively explains why RK4 is more accurate than Euler based on the reference material."
+  },
+  {
+    "query": "What is Lagrange interpolation?",
+    "strategy": "baseline",
+    "answer": "**Lagrange Interpolation** is a method used in our **Interpolator** module (Labs 6-7, accessed via `/api/interpolation`) to estimate values between known data points. \n\nUnlike Newton's forward and backward difference formulas—which require your $x$-values to be equally spaced—Lagrange interpolation works for **unequally spaced points**. \n\nGiven a set of data points, the Lagrange polynomial constructs a combination of basis polynomials that pass directly through every given point. It is especially useful when you need an interpolation formula without having to compute divided differences.",
+    "acw_metrics": {
+      "strategy": "baseline",
+      "chunks_retrieved": 3,
+      "chunks_selected": 3,
+      "tokens_before": 195,
+      "tokens_after": 195,
+      "token_reduction_pct": 0.0,
+      "scoring_mode": "baseline",
+      "alpha_used": null
+    },
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately and comprehensively explains Lagrange interpolation using the provided reference material."
+  },
+  {
+    "query": "What is finite difference?",
+    "strategy": "baseline",
+    "answer": "In numerical analysis, **finite difference** is a method used to approximate derivatives by evaluating a function at discrete, evenly spaced points. \n\nDepending on the direction in which you look from a given point, finite difference formulas are generally categorized as:\n* **Forward Finite Difference:** Uses the current point and a point ahead of it (forward in the step size $h$).\n* **Backward Finite Difference:** Uses the current point and a point behind it (backward in the step size $h$).\n\n### Where it's used in NumeriX:\n* **Differentiator (Lab 8):** This module uses Forward and Backward Finite Difference formulas to estimate both first and second-order derivatives given a step size $h$ and a set of function values (via the `/api/differentiation` endpoint).\n* **Interpolator (Labs 6-7):** Newton's Forward and Backward Difference methods also rely on finite differences to construct polynomials that estimate values between known, equally spaced data points. \n\nLet me know if you would like an example of how to apply a forward or backward difference formula!",
+    "acw_metrics": {
+      "strategy": "baseline",
+      "chunks_retrieved": 3,
+      "chunks_selected": 3,
+      "tokens_before": 178,
+      "tokens_after": 178,
+      "token_reduction_pct": 0.0,
+      "scoring_mode": "baseline",
+      "alpha_used": null
+    },
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately explains finite difference using the provided reference material and general numerical analysis knowledge."
+  },
+  {
+    "query": "What is LU decomposition?",
+    "strategy": "baseline",
+    "answer": "**LU Decomposition** is a numerical method used to solve systems of linear equations of the form $Ax = b$. \n\nIt works by factoring a square matrix $A$ into two triangular matrices:\n1. **$L$ (Lower triangular matrix)**\n2. **$U$ (Upper triangular matrix)**\n\nSuch that $A = L \\cdot U$. \n\nOnce the matrix is factored, solving the system $Ax = b$ becomes much simpler and is broken down into two steps:\n1. **Forward Substitution:** Solve $Ly = b$ for $y$.\n2. **Back Substitution:** Solve $Ux = y$ for the final solution vector $x$.\n\n### How it works in NumeriX:\nIn the **Linear Systems (Lab 13)** module of NumeriX, we use two main variations of LU Decomposition:\n* **Doolittle Method:** Factors $A$ where the lower triangular matrix $L$ has ones on its main diagonal.\n* **Crout Method:** Factors $A$ where the upper triangular matrix $U$ has ones on its main diagonal.\n\nYou can compute this directly using the `/api/linear` endpoint in our backend! Let me know if you'd like to see an example or want to explore how to solve a system using this method.",
+    "acw_metrics": {
+      "strategy": "baseline",
+      "chunks_retrieved": 3,
+      "chunks_selected": 3,
+      "tokens_before": 212,
+      "tokens_after": 212,
+      "token_reduction_pct": 0.0,
+      "scoring_mode": "baseline",
+      "alpha_used": null
+    },
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately and comprehensively explains LU decomposition based on the reference material."
+  },
+  {
+    "query": "What is truncation error?",
+    "strategy": "baseline",
+    "answer": "In the **Error Analyzer (Lab 2)** module, **truncation error** is defined as the error that arises when approximating an infinite process—such as a Taylor series or an infinite sum—with a finite number of terms. \n\nFor example, if you approximate a function using a few terms of a Taylor polynomial and cut off (truncate) the remaining terms, the difference between the true function value and your finite approximation is the truncation error. \n\nIf you are analyzing errors in our app, you can use the `/api/errors` endpoint to compute this and other types of errors! Let me know if you have questions about other numerical errors or methods.",
+    "acw_metrics": {
+      "strategy": "baseline",
+      "chunks_retrieved": 3,
+      "chunks_selected": 3,
+      "tokens_before": 228,
+      "tokens_after": 228,
+      "token_reduction_pct": 0.0,
+      "scoring_mode": "baseline",
+      "alpha_used": null
+    },
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately and comprehensively defines truncation error based on the reference material."
+  },
+  {
+    "query": "What is NumeriX?",
+    "strategy": "baseline",
+    "answer": "**NumeriX** is a full-stack interactive numerical methods calculator built for the BSE-6C Numerical Analysis course at Bahria University Karachi Campus. \n\nIt features a React + Tailwind frontend and a Python FastAPI backend, covering 13 different labs across various numerical analysis topics including:\n* Error analysis\n* Root finding (Labs 4-5)\n* Interpolation\n* Numerical differentiation (Lab 8)\n* Numerical integration\n* Ordinary Differential Equation (ODE) solving\n* Linear systems\n\nEvery module in NumeriX provides detailed iteration tables and live charts to help you visualize and understand the computational process! Let me know if you want to explore a specific module, like the Root Finder or Differentiator.",
+    "acw_metrics": {
+      "strategy": "baseline",
+      "chunks_retrieved": 3,
+      "chunks_selected": 3,
+      "tokens_before": 236,
+      "tokens_after": 236,
+      "token_reduction_pct": 0.0,
+      "scoring_mode": "baseline",
+      "alpha_used": null
+    },
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately and comprehensively describes NumeriX based on the reference material."
+  },
+  {
+    "query": "What topics does this app cover?",
+    "strategy": "baseline",
+    "answer": "NumeriX covers 13 different labs spanning the BSE-6C Numerical Analysis course at Bahria University Karachi Campus. Specifically, the app includes modules for:\n\n* **Error Analysis**\n* **Root Finding** (using methods like Bisection, False Position, Newton-Raphson, and Fixed-Point iteration)\n* **Interpolation** (using Newton's Forward, Backward, and Divided Differences, as well as Lagrange Interpolation)\n* **Numerical Differentiation**\n* **Numerical Integration**\n* **Solving Ordinary Differential Equations (ODEs)**\n* **Linear Systems**\n\nEach module provides step-by-step iteration tables and live charts to help you visualize the results! Let me know if you would like to dive deeper into any of these topics.",
+    "acw_metrics": {
+      "strategy": "baseline",
+      "chunks_retrieved": 3,
+      "chunks_selected": 3,
+      "tokens_before": 247,
+      "tokens_after": 247,
+      "token_reduction_pct": 0.0,
+      "scoring_mode": "baseline",
+      "alpha_used": null
+    },
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately and completely lists all the topics covered by the app based on the reference material."
+  },
+  {
+    "query": "What is the Bisection method?",
+    "strategy": "moderate",
+    "answer": "The **Bisection method** is a bracketing root-finding method used to solve $f(x) = 0$. \n\nHere is how it works:\n1. **Bracketing Interval:** It requires an initial interval $[a, b]$ where the function values at the endpoints have opposite signs ($f(a) \\cdot f(b) < 0$), which guarantees by the Intermediate Value Theorem that at least one root exists within that interval.\n2. **Iteration:** The method repeatedly bisects the interval by computing the midpoint $c = \\frac{a + b}{2}$.\n3. **Updating:** It evaluates $f(c)$ and checks which subinterval ($[a, c]$ or $[c, b]$) contains the sign change, replacing either $a$ or $b$ with $c$ for the next iteration.\n\nIn the **NumeriX** app, the Bisection method is available under the **Root Finder (Labs 4-5)** module (endpoint `/api/roots`). Like all modules in NumeriX, it generates an iteration table showing the approximate error at each step alongside live charts to help you visualize the convergence.\n\nLet me know if you'd like to explore how to set up an interval for it or compare it with other root-finding methods like False Position or Newton-Raphson!",
+    "acw_metrics": {
+      "strategy": "moderate",
+      "chunks_retrieved": 3,
+      "chunks_selected": 2,
+      "tokens_before": 288,
+      "tokens_after": 188,
+      "token_reduction_pct": 34.72,
+      "scoring_mode": "hybrid",
+      "alpha_used": 0.7
+    },
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately and comprehensively explains the Bisection method using both general numerical knowledge and the provided reference material."
+  },
+  {
+    "query": "How does Newton-Raphson converge?",
+    "strategy": "moderate",
+    "answer": "In the **Root Finder** module (Labs 4-5), the Newton-Raphson method is used to solve $f(x) = 0$. \n\nNewton-Raphson converges **quadratically** near the root. This means that the number of accurate decimal places roughly doubles with each iteration, making it much faster than methods like Bisection or False Position when you have a good initial guess.\n\nTo run Newton-Raphson, the method requires:\n1. The function $f(x)$\n2. Its derivative $f'(x)$\n3. An initial guess $x_0$\n\nGeometrically, it works by taking the tangent line to the curve at your current guess, finding where that tangent line crosses the x-axis, and using that x-intercept as your next guess. \n\nYou can test this method out using the `/api/roots` endpoint in the Root Finder module, which will generate a full iteration table showing the approximate error at each step!",
+    "acw_metrics": {
+      "strategy": "moderate",
+      "chunks_retrieved": 3,
+      "chunks_selected": 2,
+      "tokens_before": 259,
+      "tokens_after": 183,
+      "token_reduction_pct": 29.34,
+      "scoring_mode": "hybrid",
+      "alpha_used": 0.7
+    },
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately explains quadratic convergence using the provided reference material while adding appropriate technical context."
+  },
+  {
+    "query": "What is Simpson's 1/3 rule?",
+    "strategy": "moderate",
+    "answer": "**Simpson's 1/3 Rule** is a numerical method used to approximate definite integrals. It is available in the **Integrator** module (Labs 9-10) of NumeriX via the `/api/integration` endpoint.\n\nHere are the key details about the rule:\n* **How it works:** Instead of approximating the function with straight-line segments (like the Trapezoidal Rule), Simpson's 1/3 Rule fits quadratic polynomials (parabolas) through sets of points to estimate the area under the curve.\n* **Interval Requirement:** To use Simpson's 1/3 Rule, the integration domain must be divided into an **even number of intervals** (which means an odd number of data points).\n* **Application:** It is commonly used alongside other methods in the Integrator module, such as the Trapezoidal Rule, Simpson's 3/8 Rule (which works in groups of three intervals), and rules designed for unequally spaced segments. \n\nLet me know if you would like to know how to set this up or need help with a specific integral calculation!",
+    "acw_metrics": {
+      "strategy": "moderate",
+      "chunks_retrieved": 3,
+      "chunks_selected": 2,
+      "tokens_before": 187,
+      "tokens_after": 128,
+      "token_reduction_pct": 31.55,
+      "scoring_mode": "hybrid",
+      "alpha_used": 0.7
+    },
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately and comprehensively explains Simpson's 1/3 rule using both the reference material and general mathematical knowledge."
+  },
+  {
+    "query": "Why is RK4 more accurate than Euler?",
+    "strategy": "moderate",
+    "answer": "RK4 (4th Order Runge-Kutta) is more accurate than Euler's method because of how it estimates the slope over each step size $h$:\n\n* **Euler's Method** only evaluates the slope at the *beginning* of the interval and assumes that slope stays constant across the entire step. This leads to larger truncation errors.\n* **RK4** evaluates the slope at **four distinct points** per step (the beginning, two midpoints, and the end) and computes a weighted average of these slopes. \n\nBecause it samples the behavior of the function at multiple points within the step interval, RK4 achieves a much higher order of accuracy for a given step size $h$. \n\n*(In our application, you can test this using the ODE Solver module at the `/api/ode` endpoint, which supports Euler's Method, Improved Euler, and RK4 for solving first-order ODEs $\\frac{dy}{dx} = f(x, y)$).*",
+    "acw_metrics": {
+      "strategy": "moderate",
+      "chunks_retrieved": 3,
+      "chunks_selected": 2,
+      "tokens_before": 283,
+      "tokens_after": 183,
+      "token_reduction_pct": 35.34,
+      "scoring_mode": "hybrid",
+      "alpha_used": 0.7
+    },
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately explains RK4 superiority using both the provided reference and standard numerical analysis knowledge."
+  },
+  {
+    "query": "What is Lagrange interpolation?",
+    "strategy": "moderate",
+    "answer": "**Lagrange Interpolation** is a method used in the **Interpolator module** (Labs 6–7) to estimate unknown values between a set of known data points. \n\nHere are the key details about Lagrange Interpolation:\n* **Unequally Spaced Points:** Unlike Newton's Forward or Backward Difference methods—which require the $x$-values to be equally spaced—Lagrange Interpolation works for both equally and **unequally spaced** data points.\n* **How it works:** It constructs a unique polynomial (called the Lagrange polynomial) that passes directly through all of the given data points. \n* **API Endpoint:** If you are using the NumeriX web app programmatically, this functionality can be accessed via the `/api/interpolation` endpoint.\n\nLet me know if you would like to see the formula or need help implementing it in the app!",
+    "acw_metrics": {
+      "strategy": "moderate",
+      "chunks_retrieved": 3,
+      "chunks_selected": 2,
+      "tokens_before": 195,
+      "tokens_after": 138,
+      "token_reduction_pct": 29.23,
+      "scoring_mode": "hybrid",
+      "alpha_used": 0.7
+    },
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately uses the provided reference material to explain Lagrange interpolation."
+  },
+  {
+    "query": "What is finite difference?",
+    "strategy": "moderate",
+    "answer": "**Finite difference** is a numerical method used to approximate derivatives of a function when you don't have its exact analytical formula, or when you only have a discrete set of function values (data points). \n\nInstead of taking the limit as the step size $h$ approaches zero (as in calculus), finite difference methods use a small, finite step size $h$ to estimate the slope or curvature. \n\nHere is how it's applied in the **Differentiator (Lab 8)** module of NumeriX:\n* **Forward Finite Difference:** Uses the current point and a point *ahead* of it ($x + h$) to estimate the derivative.\n* **Backward Finite Difference:** Uses the current point and a point *behind* it ($x - h$) to estimate the derivative.\n\nThese formulas can be used to estimate both first and second-order derivatives. If you'd like to try it out, you can use the differentiator tool via the `/api/differentiation` endpoint!",
+    "acw_metrics": {
+      "strategy": "moderate",
+      "chunks_retrieved": 3,
+      "chunks_selected": 2,
+      "tokens_before": 178,
+      "tokens_after": 119,
+      "token_reduction_pct": 33.15,
+      "scoring_mode": "hybrid",
+      "alpha_used": 0.7
+    },
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately and comprehensively explains finite difference using the provided reference material."
+  },
+  {
+    "query": "What is LU decomposition?",
+    "strategy": "moderate",
+    "answer": "**LU Decomposition** is a method used to solve systems of linear equations of the form $Ax = b$. \n\nIt works by factoring a square matrix $A$ into the product of two triangular matrices:\n1. **$L$ (Lower triangular matrix)**\n2. **$U$ (Upper triangular matrix)**\n\nSo that $A = LU$. \n\nIn the **Linear Systems (Lab 13)** module of NumeriX, we use two specific variations of this technique:\n* **The Doolittle method:** Where the lower-triangular matrix $L$ has ones on its main diagonal.\n* **The Crout method:** Where the upper-triangular matrix $U$ has ones on its main diagonal.\n\n### How it solves $Ax = b$:\nOnce the matrix $A$ is factored into $L$ and $U$, solving the system becomes much easier and is done in two steps:\n1. **Forward Substitution:** Solve $Ly = b$ for $y$.\n2. **Back Substitution:** Solve $Ux = y$ for the final solution vector $x$.\n\nIn the NumeriX app, you can compute this using the linear systems endpoint (`/api/linear`). \n\nLet me know if you would like to know more about how forward or back substitution works!",
+    "acw_metrics": {
+      "strategy": "moderate",
+      "chunks_retrieved": 3,
+      "chunks_selected": 2,
+      "tokens_before": 212,
+      "tokens_after": 155,
+      "token_reduction_pct": 26.89,
+      "scoring_mode": "hybrid",
+      "alpha_used": 0.7
+    },
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately and completely explains LU decomposition based on the reference material."
+  },
+  {
+    "query": "What is truncation error?",
+    "strategy": "moderate",
+    "answer": "Truncation error comes from approximating an infinite process (such as an infinite series, like a Taylor series) with a finite number of terms. \n\nIn our **Error Analyzer (Lab 2)** module, truncation error is tracked alongside absolute, relative, and round-off errors. You can access calculations for these errors via the `/api/errors` endpoint.",
+    "acw_metrics": {
+      "strategy": "moderate",
+      "chunks_retrieved": 3,
+      "chunks_selected": 2,
+      "tokens_before": 228,
+      "tokens_after": 171,
+      "token_reduction_pct": 25.0,
+      "scoring_mode": "hybrid",
+      "alpha_used": 0.7
+    },
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately and completely defines truncation error using the reference material."
+  },
+  {
+    "query": "What is NumeriX?",
+    "strategy": "moderate",
+    "answer": "**NumeriX** is a full-stack interactive numerical methods calculator built for the BSE-6C Numerical Analysis course at Bahria University Karachi Campus. \n\nIt features a React + Tailwind frontend and a Python FastAPI backend, covering 13 different labs across error analysis, root finding, interpolation, differentiation, integration, ODE solving, and linear systems. Each module comes complete with detailed iteration tables and live charts to help you visualize and understand numerical concepts!",
+    "acw_metrics": {
+      "strategy": "moderate",
+      "chunks_retrieved": 3,
+      "chunks_selected": 2,
+      "tokens_before": 236,
+      "tokens_after": 124,
+      "token_reduction_pct": 47.46,
+      "scoring_mode": "hybrid",
+      "alpha_used": 0.7
+    },
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately and comprehensively reflects the reference material regarding what NumeriX is."
+  },
+  {
+    "query": "What topics does this app cover?",
+    "strategy": "moderate",
+    "answer": "NumeriX covers 13 different labs spanning several key topics in numerical analysis, specifically:\n\n* **Error Analysis**\n* **Root Finding** (Labs 4-5, featuring methods like Bisection, False Position, Newton-Raphson, and Fixed-Point iteration)\n* **Interpolation**\n* **Differentiation**\n* **Integration**\n* **ODE Solving** (Ordinary Differential Equations)\n* **Linear Systems**\n\nFor each method, the app provides interactive tools complete with iteration tables and live charts! Is there a specific topic or lab you'd like to dive into?",
+    "acw_metrics": {
+      "strategy": "moderate",
+      "chunks_retrieved": 3,
+      "chunks_selected": 2,
+      "tokens_before": 247,
+      "tokens_after": 188,
+      "token_reduction_pct": 23.89,
+      "scoring_mode": "hybrid",
+      "alpha_used": 0.7
+    },
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately and comprehensively lists all topics covered by the app based on the reference material."
+  },
+  {
+    "query": "What is the Bisection method?",
+    "strategy": "aggressive",
+    "answer": "The **Bisection method** is a bracketing numerical method used to find the root of an equation of the form $f(x) = 0$. \n\nHere is how it works:\n1. **Bracketing Interval:** You start with an initial interval $[a, b]$ where the function values at the endpoints have opposite signs ($f(a) \\cdot f(b) < 0$). According to the Intermediate Value Theorem, this guarantees that at least one root exists within the interval.\n2. **Bisecting:** The method calculates the midpoint $c$ of the interval: \n   $$c = \\frac{a + b}{2}$$\n3. **Checking and Updating:** It evaluates $f(c)$. \n   * If $f(c) = 0$, $c$ is the exact root.\n   * If $f(c)$ has the same sign as $f(a)$, the root must be in the right subinterval, so $a$ is replaced by $c$.\n   * Otherwise, the root is in the left subinterval, so $b$ is replaced by $c$.\n4. **Iterating:** This process repeats until the interval is extremely small or the approximate error falls below your desired tolerance. Every step cuts the possible error in half, making it reliable, though it converges more slowly than methods like Newton-Raphson.\n\nIn the **NumeriX Assistant Root Finder module** (accessible via `/api/roots`), Bisection is one of the supported methods alongside False Position, Newton-Raphson, and Fixed-Point iteration, and it will output a complete iteration table tracking the approximate error at each step.",
+    "acw_metrics": {
+      "strategy": "aggressive",
+      "chunks_retrieved": 3,
+      "chunks_selected": 1,
+      "tokens_before": 288,
+      "tokens_after": 112,
+      "token_reduction_pct": 61.11,
+      "scoring_mode": "hybrid",
+      "alpha_used": 0.7
+    },
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately explains the Bisection method while correctly integrating specific details from the reference material."
+  },
+  {
+    "query": "How does Newton-Raphson converge?",
+    "strategy": "aggressive",
+    "answer": "In the **Root Finder** module (endpoint `/api/roots`), the **Newton-Raphson** method converges **quadratically** near the root. \n\nThis means that as the method gets closer to the true root, the number of accurate decimal places roughly doubles with each iteration, making it much faster than methods with linear convergence (like Bisection or False Position), provided you start with a good initial guess.\n\nTo run Newton-Raphson, the method requires:\n1. The function $f(x)$\n2. Its derivative $f'(x)$\n3. An initial guess $x_0$",
+    "acw_metrics": {
+      "strategy": "aggressive",
+      "chunks_retrieved": 3,
+      "chunks_selected": 1,
+      "tokens_before": 259,
+      "tokens_after": 112,
+      "token_reduction_pct": 56.76,
+      "scoring_mode": "hybrid",
+      "alpha_used": 0.7
+    },
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately and comprehensively explains how Newton-Raphson converges based on the reference material."
+  },
+  {
+    "query": "What is Simpson's 1/3 rule?",
+    "strategy": "aggressive",
+    "answer": "Hello! I'm the NumeriX Assistant, and I'd be happy to help explain Simpson's 1/3 Rule.\n\n**Simpson's 1/3 Rule** is a numerical method used to approximate definite integrals. Instead of approximating the area under a curve using straight trapezoids (like the Trapezoidal Rule), Simpson's 1/3 Rule approximates the curve by fitting **parabolas** (quadratic polynomials) through sets of points. \n\nHere are the key details about the rule:\n* **Interval Requirement:** To use Simpson's 1/3 Rule, the integration interval must be divided into an **even number of subintervals** (which means an odd number of equally spaced data points).\n* **Naming:** It gets the \"1/3\" name from the $h/3$ factor that appears in its standard formula (where $h$ is the step size between points).\n* **In NumeriX:** You can compute integrals using this method in our app via the **Integrator** module (Labs 9-10) at the `/api/integration` endpoint.\n\nLet me know if you would like to see the mathematical formula or an example of how it works!",
+    "acw_metrics": {
+      "strategy": "aggressive",
+      "chunks_retrieved": 3,
+      "chunks_selected": 1,
+      "tokens_before": 187,
+      "tokens_after": 58,
+      "token_reduction_pct": 68.98,
+      "scoring_mode": "hybrid",
+      "alpha_used": 0.7
+    },
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately explains Simpson's 1/3 rule while correctly incorporating the reference material."
+  },
+  {
+    "query": "Why is RK4 more accurate than Euler?",
+    "strategy": "aggressive",
+    "answer": "Welcome to NumeriX Assistant! \n\n**4th Order Runge-Kutta (RK4)** is more accurate than **Euler's Method** because of how it estimates the slope ($f(x, y)$) over each step $h$:\n\n* **Euler's Method** only evaluates the slope at the *beginning* of the interval. It assumes that slope is constant across the entire step, which introduces significant error as the step size $h$ increases (it has a global error order of $O(h)$).\n* **RK4** evaluates the slope at *four distinct points* per step: one at the beginning, two at midpoints, and one at the end. It then computes a weighted average of these four slopes to take the step. \n\nBecause it samples the curvature of the solution multiple times within a single step, RK4 achieves a much higher order of accuracy (global error of $O(h^4)$) for the same step size $h$. \n\nYou can try comparing their accuracy yourself using our **ODE Solver** module (Endpoint: `/api/ode`), which lets you solve first-order ODEs of the form $dy/dx = f(x, y)$ using Euler, Improved Euler (Heun's), and RK4!",
+    "acw_metrics": {
+      "strategy": "aggressive",
+      "chunks_retrieved": 3,
+      "chunks_selected": 1,
+      "tokens_before": 283,
+      "tokens_after": 71,
+      "token_reduction_pct": 74.91,
+      "scoring_mode": "hybrid",
+      "alpha_used": 0.7
+    },
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately explains why RK4 is more accurate using the provided reference material while adding clear context."
+  },
+  {
+    "query": "What is Lagrange interpolation?",
+    "strategy": "aggressive",
+    "answer": "**Lagrange Interpolation** is a method used to estimate intermediate values between known data points. \n\nIn our **Interpolator** module (covered in Labs 6-7), Lagrange interpolation is particularly useful because it works for **unequally spaced** $x$-values (unlike Newton's Forward or Backward difference methods, which require equally spaced points). \n\n### How it works conceptually:\nInstead of finding a single combined polynomial all at once, Lagrange interpolation constructs a set of basis polynomials (often denoted as $L_i(x)$) for each data point. Each basis polynomial is designed to be $1$ at its corresponding $x$-value and $0$ at all other $x$-value data points. The final interpolating polynomial is the sum of each data point's y-value multiplied by its corresponding basis polynomial.\n\nYou can compute this in the app using the `/api/interpolation` endpoint.\n\n***\n\n*If you have questions about other interpolation methods, numerical analysis topics, or how to use the app, feel free to ask!*",
+    "acw_metrics": {
+      "strategy": "aggressive",
+      "chunks_retrieved": 3,
+      "chunks_selected": 1,
+      "tokens_before": 195,
+      "tokens_after": 59,
+      "token_reduction_pct": 69.74,
+      "scoring_mode": "hybrid",
+      "alpha_used": 0.7
+    },
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately explains Lagrange interpolation using both the reference material and general mathematical knowledge."
+  },
+  {
+    "query": "What is finite difference?",
+    "strategy": "aggressive",
+    "answer": "**Finite difference** is a numerical method used to approximate derivatives of a function when you don't have its exact analytical formula, or when you only have a discrete set of data points (such as function values at specific $x$ positions). \n\nInstead of taking a limit as the step size $h$ approaches zero (as in calculus), finite difference methods approximate the slope by taking the difference between function values at nearby points and dividing by the step size $h$.\n\nCommon types include:\n* **Forward Difference:** Uses the current point and a point ahead of it ($x + h$).\n* **Backward Difference:** Uses the current point and a point behind it ($x - h$).\n* **Central Difference:** Uses points on both sides of the current point ($x + h$ and $x - h$).\n\nIn our web app, you can use the **Differentiator (Lab 8)** module (endpoint: `/api/differentiation`) to estimate both first and second-order derivatives numerically using these formulas given a step size $h$ and a set of function values. \n\nLet me know if you'd like an example of how to apply it!",
+    "acw_metrics": {
+      "strategy": "aggressive",
+      "chunks_retrieved": 3,
+      "chunks_selected": 1,
+      "tokens_before": 178,
+      "tokens_after": 48,
+      "token_reduction_pct": 73.03,
+      "scoring_mode": "hybrid",
+      "alpha_used": 0.7
+    },
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately explains finite difference and appropriately integrates the provided reference material about the Differentiator module."
+  },
+  {
+    "query": "What is LU decomposition?",
+    "strategy": "aggressive",
+    "answer": "**LU Decomposition** is a numerical method used to solve systems of linear equations of the form $Ax = b$. \n\nIt works by factoring the coefficient matrix $A$ into the product of two simpler matrices:\n1. **$L$ (Lower triangular matrix)**: Has non-zero elements only on and below the main diagonal.\n2. **$U$ (Upper triangular matrix)**: Has non-zero elements only on and above the main diagonal.\n\nSo, $A = LU$. \n\nOnce the matrix is factored, solving the system $Ax = b$ (or $LUx = b$) becomes much easier and is done in two steps:\n1. **Forward Substitution**: Solve $Ly = b$ for $y$.\n2. **Back Substitution**: Solve $Ux = y$ for the final solution vector $x$.\n\n### How we do it in NumeriX:\nIn the **Linear Systems (Lab 13)** module, we use LU Decomposition with two main variations:\n* **Doolittle Method**: Creates an $L$ matrix with 1s on its main diagonal (unit lower-triangular).\n* **Crout Method**: Creates a $U$ matrix with 1s on its main diagonal (unit upper-triangular).\n\nYou can access and test this functionality using our backend endpoint at `/api/linear`. Let me know if you would like an example of how to set up a system of equations for it!",
+    "acw_metrics": {
+      "strategy": "aggressive",
+      "chunks_retrieved": 3,
+      "chunks_selected": 1,
+      "tokens_before": 212,
+      "tokens_after": 79,
+      "token_reduction_pct": 62.74,
+      "scoring_mode": "hybrid",
+      "alpha_used": 0.7
+    },
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately and completely explains LU decomposition using the provided reference material."
+  },
+  {
+    "query": "What is truncation error?",
+    "strategy": "aggressive",
+    "answer": "Welcome to NumeriX! \n\nIn numerical analysis, **truncation error** is the error that arises when we approximate an infinite process—such as an infinite series (like a Taylor series) or an infinite limit—with a finite number of terms or steps. \n\nFor example, if you approximate the exponential function $e^x$ using only the first few terms of its Taylor series and cut off (truncate) the rest, the difference between the exact value of $e^x$ and your finite approximation is the truncation error.\n\nIn our app, you can explore this further using the **Error Analyzer (Lab 2)** tool (endpoint: `/api/errors`), which computes truncation error alongside absolute, relative, and round-off errors. \n\nLet me know if you have any questions about how to calculate it or how it relates to other types of errors!",
+    "acw_metrics": {
+      "strategy": "aggressive",
+      "chunks_retrieved": 3,
+      "chunks_selected": 1,
+      "tokens_before": 228,
+      "tokens_after": 100,
+      "token_reduction_pct": 56.14,
+      "scoring_mode": "hybrid",
+      "alpha_used": 0.7
+    },
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately defines truncation error based on the reference material and adds helpful context."
+  },
+  {
+    "query": "What is NumeriX?",
+    "strategy": "aggressive",
+    "answer": "**NumeriX** is a full-stack interactive numerical methods calculator built specifically for the BSE-6C Numerical Analysis course at Bahria University Karachi Campus. \n\nIt features a React + Tailwind frontend and a Python FastAPI backend, and it covers 13 different labs across various numerical topics including:\n* Error analysis\n* Root finding\n* Interpolation\n* Numerical differentiation\n* Numerical integration\n* Ordinary Differential Equation (ODE) solving\n* Linear systems\n\nEach method in NumeriX comes equipped with detailed iteration tables and live charts to help you visualize and understand the computational process! How can I help you with numerical methods today?",
+    "acw_metrics": {
+      "strategy": "aggressive",
+      "chunks_retrieved": 3,
+      "chunks_selected": 1,
+      "tokens_before": 236,
+      "tokens_after": 76,
+      "token_reduction_pct": 67.8,
+      "scoring_mode": "hybrid",
+      "alpha_used": 0.7
+    },
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately and completely defines NumeriX using the reference material."
+  },
+  {
+    "query": "What topics does this app cover?",
+    "strategy": "aggressive",
+    "answer": "NumeriX covers 13 different labs spanning several core areas of numerical analysis:\n\n* **Error Analysis**\n* **Root Finding**\n* **Interpolation**\n* **Differentiation**\n* **Integration**\n* **ODE Solving (Ordinary Differential Equations)**\n* **Linear Systems**\n\nEvery topic features interactive tools with iteration tables and live charts to help you visualize and understand the methods!",
+    "acw_metrics": {
+      "strategy": "aggressive",
+      "chunks_retrieved": 3,
+      "chunks_selected": 1,
+      "tokens_before": 247,
+      "tokens_after": 76,
+      "token_reduction_pct": 69.23,
+      "scoring_mode": "hybrid",
+      "alpha_used": 0.7
+    },
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately and comprehensively lists all the topics covered by the app based on the reference material."
+  }
+]

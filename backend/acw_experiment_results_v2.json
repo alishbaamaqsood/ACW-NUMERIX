@@ -1,0 +1,477 @@
+{
+  "baseline": [
+    {
+      "query": "What is the Bisection method?",
+      "strategy": "baseline",
+      "latency_ms": 4909.9,
+      "tokens_before": 288,
+      "tokens_after": 288,
+      "token_reduction_pct": 0.0,
+      "chunks_retrieved": 3,
+      "chunks_selected": 3,
+      "reply_length": 1095,
+      "sources": [
+        "Root Finder (Labs 4-5)",
+        "Error Analyzer (Lab 2)",
+        "About NumeriX"
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "How does Newton-Raphson converge?",
+      "strategy": "baseline",
+      "latency_ms": 4099.5,
+      "tokens_before": 259,
+      "tokens_after": 259,
+      "token_reduction_pct": 0.0,
+      "chunks_retrieved": 3,
+      "chunks_selected": 3,
+      "reply_length": 820,
+      "sources": [
+        "Root Finder (Labs 4-5)",
+        "About NumeriX",
+        "ODE Solver (Labs 11-12)"
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "What is Simpson's 1/3 rule?",
+      "strategy": "baseline",
+      "latency_ms": 4185.9,
+      "tokens_before": 187,
+      "tokens_after": 187,
+      "token_reduction_pct": 0.0,
+      "chunks_retrieved": 3,
+      "chunks_selected": 3,
+      "reply_length": 904,
+      "sources": [
+        "Integrator (Labs 9-10)",
+        "ODE Solver (Labs 11-12)",
+        "Interpolator (Labs 6-7)"
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "Why is RK4 more accurate than Euler?",
+      "strategy": "baseline",
+      "latency_ms": 4279.5,
+      "tokens_before": 283,
+      "tokens_after": 283,
+      "token_reduction_pct": 0.0,
+      "chunks_retrieved": 3,
+      "chunks_selected": 3,
+      "reply_length": 996,
+      "sources": [
+        "ODE Solver (Labs 11-12)",
+        "Error Analyzer (Lab 2)",
+        "Root Finder (Labs 4-5)"
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "What is Lagrange interpolation?",
+      "strategy": "baseline",
+      "status": "error",
+      "error": "HTTPConnectionPool(host='localhost', port=8000): Read timed out. (read timeout=30)"
+    },
+    {
+      "query": "What is finite difference?",
+      "strategy": "baseline",
+      "latency_ms": 4509.9,
+      "tokens_before": 178,
+      "tokens_after": 178,
+      "token_reduction_pct": 0.0,
+      "chunks_retrieved": 3,
+      "chunks_selected": 3,
+      "reply_length": 1290,
+      "sources": [
+        "Differentiator (Lab 8)",
+        "Interpolator (Labs 6-7)",
+        "ODE Solver (Labs 11-12)"
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "What is LU decomposition?",
+      "strategy": "baseline",
+      "latency_ms": 4395.4,
+      "tokens_before": 212,
+      "tokens_after": 212,
+      "token_reduction_pct": 0.0,
+      "chunks_retrieved": 3,
+      "chunks_selected": 3,
+      "reply_length": 1187,
+      "sources": [
+        "Linear Systems (Lab 13)",
+        "About NumeriX",
+        "Integrator (Labs 9-10)"
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "What is truncation error?",
+      "strategy": "baseline",
+      "latency_ms": 3872.5,
+      "tokens_before": 228,
+      "tokens_after": 228,
+      "token_reduction_pct": 0.0,
+      "chunks_retrieved": 3,
+      "chunks_selected": 3,
+      "reply_length": 348,
+      "sources": [
+        "Error Analyzer (Lab 2)",
+        "ODE Solver (Labs 11-12)",
+        "Integrator (Labs 9-10)"
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "What is NumeriX?",
+      "strategy": "baseline",
+      "latency_ms": 3767.3,
+      "tokens_before": 236,
+      "tokens_after": 236,
+      "token_reduction_pct": 0.0,
+      "chunks_retrieved": 3,
+      "chunks_selected": 3,
+      "reply_length": 668,
+      "sources": [
+        "About NumeriX",
+        "Root Finder (Labs 4-5)",
+        "Differentiator (Lab 8)"
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "What topics does this app cover?",
+      "strategy": "baseline",
+      "latency_ms": 4082.4,
+      "tokens_before": 247,
+      "tokens_after": 247,
+      "token_reduction_pct": 0.0,
+      "chunks_retrieved": 3,
+      "chunks_selected": 3,
+      "reply_length": 846,
+      "sources": [
+        "About NumeriX",
+        "Interpolator (Labs 6-7)",
+        "Root Finder (Labs 4-5)"
+      ],
+      "status": "ok"
+    }
+  ],
+  "moderate": [
+    {
+      "query": "What is the Bisection method?",
+      "strategy": "moderate",
+      "latency_ms": 4379.8,
+      "tokens_before": 288,
+      "tokens_after": 188,
+      "token_reduction_pct": 34.72,
+      "chunks_retrieved": 3,
+      "chunks_selected": 2,
+      "reply_length": 1022,
+      "sources": [
+        "Root Finder (Labs 4-5)",
+        "About NumeriX"
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "How does Newton-Raphson converge?",
+      "strategy": "moderate",
+      "latency_ms": 4294.5,
+      "tokens_before": 259,
+      "tokens_after": 183,
+      "token_reduction_pct": 29.34,
+      "chunks_retrieved": 3,
+      "chunks_selected": 2,
+      "reply_length": 898,
+      "sources": [
+        "Root Finder (Labs 4-5)",
+        "ODE Solver (Labs 11-12)"
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "What is Simpson's 1/3 rule?",
+      "strategy": "moderate",
+      "latency_ms": 4100.7,
+      "tokens_before": 187,
+      "tokens_after": 128,
+      "token_reduction_pct": 31.55,
+      "chunks_retrieved": 3,
+      "chunks_selected": 2,
+      "reply_length": 701,
+      "sources": [
+        "Integrator (Labs 9-10)",
+        "ODE Solver (Labs 11-12)"
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "Why is RK4 more accurate than Euler?",
+      "strategy": "moderate",
+      "latency_ms": 4296.2,
+      "tokens_before": 283,
+      "tokens_after": 183,
+      "token_reduction_pct": 35.34,
+      "chunks_retrieved": 3,
+      "chunks_selected": 2,
+      "reply_length": 924,
+      "sources": [
+        "ODE Solver (Labs 11-12)",
+        "Root Finder (Labs 4-5)"
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "What is Lagrange interpolation?",
+      "strategy": "moderate",
+      "latency_ms": 17710.5,
+      "tokens_before": 195,
+      "tokens_after": 138,
+      "token_reduction_pct": 29.23,
+      "chunks_retrieved": 3,
+      "chunks_selected": 2,
+      "reply_length": 948,
+      "sources": [
+        "Interpolator (Labs 6-7)",
+        "Linear Systems (Lab 13)"
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "What is finite difference?",
+      "strategy": "moderate",
+      "latency_ms": 4420.9,
+      "tokens_before": 178,
+      "tokens_after": 119,
+      "token_reduction_pct": 33.15,
+      "chunks_retrieved": 3,
+      "chunks_selected": 2,
+      "reply_length": 874,
+      "sources": [
+        "Differentiator (Lab 8)",
+        "ODE Solver (Labs 11-12)"
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "What is LU decomposition?",
+      "strategy": "moderate",
+      "latency_ms": 11530.6,
+      "tokens_before": 212,
+      "tokens_after": 155,
+      "token_reduction_pct": 26.89,
+      "chunks_retrieved": 3,
+      "chunks_selected": 2,
+      "reply_length": 1126,
+      "sources": [
+        "Linear Systems (Lab 13)",
+        "About NumeriX"
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "What is truncation error?",
+      "strategy": "moderate",
+      "latency_ms": 3778.1,
+      "tokens_before": 228,
+      "tokens_after": 171,
+      "token_reduction_pct": 25.0,
+      "chunks_retrieved": 3,
+      "chunks_selected": 2,
+      "reply_length": 493,
+      "sources": [
+        "Error Analyzer (Lab 2)",
+        "ODE Solver (Labs 11-12)"
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "What is NumeriX?",
+      "strategy": "moderate",
+      "latency_ms": 8152.4,
+      "tokens_before": 236,
+      "tokens_after": 124,
+      "token_reduction_pct": 47.46,
+      "chunks_retrieved": 3,
+      "chunks_selected": 2,
+      "reply_length": 532,
+      "sources": [
+        "About NumeriX",
+        "Differentiator (Lab 8)"
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "What topics does this app cover?",
+      "strategy": "moderate",
+      "latency_ms": 19737.5,
+      "tokens_before": 247,
+      "tokens_after": 188,
+      "token_reduction_pct": 23.89,
+      "chunks_retrieved": 3,
+      "chunks_selected": 2,
+      "reply_length": 610,
+      "sources": [
+        "About NumeriX",
+        "Root Finder (Labs 4-5)"
+      ],
+      "status": "ok"
+    }
+  ],
+  "aggressive": [
+    {
+      "query": "What is the Bisection method?",
+      "strategy": "aggressive",
+      "latency_ms": 4268.8,
+      "tokens_before": 288,
+      "tokens_after": 112,
+      "token_reduction_pct": 61.11,
+      "chunks_retrieved": 3,
+      "chunks_selected": 1,
+      "reply_length": 1204,
+      "sources": [
+        "Root Finder (Labs 4-5)"
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "How does Newton-Raphson converge?",
+      "strategy": "aggressive",
+      "latency_ms": 8570.7,
+      "tokens_before": 259,
+      "tokens_after": 112,
+      "token_reduction_pct": 56.76,
+      "chunks_retrieved": 3,
+      "chunks_selected": 1,
+      "reply_length": 775,
+      "sources": [
+        "Root Finder (Labs 4-5)"
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "What is Simpson's 1/3 rule?",
+      "strategy": "aggressive",
+      "latency_ms": 3986.2,
+      "tokens_before": 187,
+      "tokens_after": 58,
+      "token_reduction_pct": 68.98,
+      "chunks_retrieved": 3,
+      "chunks_selected": 1,
+      "reply_length": 786,
+      "sources": [
+        "Integrator (Labs 9-10)"
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "Why is RK4 more accurate than Euler?",
+      "strategy": "aggressive",
+      "latency_ms": 4464.7,
+      "tokens_before": 283,
+      "tokens_after": 71,
+      "token_reduction_pct": 74.91,
+      "chunks_retrieved": 3,
+      "chunks_selected": 1,
+      "reply_length": 1184,
+      "sources": [
+        "ODE Solver (Labs 11-12)"
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "What is Lagrange interpolation?",
+      "strategy": "aggressive",
+      "latency_ms": 4290.7,
+      "tokens_before": 195,
+      "tokens_after": 59,
+      "token_reduction_pct": 69.74,
+      "chunks_retrieved": 3,
+      "chunks_selected": 1,
+      "reply_length": 897,
+      "sources": [
+        "Interpolator (Labs 6-7)"
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "What is finite difference?",
+      "strategy": "aggressive",
+      "latency_ms": 4242.6,
+      "tokens_before": 178,
+      "tokens_after": 48,
+      "token_reduction_pct": 73.03,
+      "chunks_retrieved": 3,
+      "chunks_selected": 1,
+      "reply_length": 1040,
+      "sources": [
+        "Differentiator (Lab 8)"
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "What is LU decomposition?",
+      "strategy": "aggressive",
+      "latency_ms": 4168.6,
+      "tokens_before": 212,
+      "tokens_after": 79,
+      "token_reduction_pct": 62.74,
+      "chunks_retrieved": 3,
+      "chunks_selected": 1,
+      "reply_length": 1101,
+      "sources": [
+        "Linear Systems (Lab 13)"
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "What is truncation error?",
+      "strategy": "aggressive",
+      "latency_ms": 3778.5,
+      "tokens_before": 228,
+      "tokens_after": 100,
+      "token_reduction_pct": 56.14,
+      "chunks_retrieved": 3,
+      "chunks_selected": 1,
+      "reply_length": 628,
+      "sources": [
+        "Error Analyzer (Lab 2)"
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "What is NumeriX?",
+      "strategy": "aggressive",
+      "latency_ms": 3689.6,
+      "tokens_before": 236,
+      "tokens_after": 76,
+      "token_reduction_pct": 67.8,
+      "chunks_retrieved": 3,
+      "chunks_selected": 1,
+      "reply_length": 530,
+      "sources": [
+        "About NumeriX"
+      ],
+      "status": "ok"
+    },
+    {
+      "query": "What topics does this app cover?",
+      "strategy": "aggressive",
+      "latency_ms": 3959.8,
+      "tokens_before": 247,
+      "tokens_after": 76,
+      "token_reduction_pct": 69.23,
+      "chunks_retrieved": 3,
+      "chunks_selected": 1,
+      "reply_length": 460,
+      "sources": [
+        "About NumeriX"
+      ],
+      "status": "ok"
+    }
+  ]
+}

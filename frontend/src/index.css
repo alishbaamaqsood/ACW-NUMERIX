@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-dark-900 text-slate-200 font-body;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-dark-700 border border-white/5 rounded-2xl backdrop-blur-sm;
+  }
+
+  .neon-border {
+    @apply border border-neon-cyan/20 shadow-[0_0_15px_rgba(0,245,255,0.05)];
+  }
+
+  .neon-border:hover {
+    @apply border-neon-cyan/40 shadow-[0_0_25px_rgba(0,245,255,0.1)];
+    transition: all 0.3s ease;
+  }
+
+  .tab-active {
+    @apply bg-neon-cyan/10 text-neon-cyan border-b-2 border-neon-cyan;
+  }
+
+  .tab-inactive {
+    @apply text-slate-400 hover:text-slate-200 hover:bg-white/5 border-b-2 border-transparent;
+  }
+
+  .input-field {
+    @apply w-full bg-dark-800 border border-white/10 rounded-lg px-4 py-2.5
+           text-slate-200 font-mono text-sm placeholder-slate-500
+           focus:outline-none focus:border-neon-cyan/50 focus:ring-1 focus:ring-neon-cyan/20
+           transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/30
+           hover:bg-neon-cyan/20 hover:border-neon-cyan/60
+           font-display font-medium px-6 py-2.5 rounded-lg
+           transition-all duration-200 flex items-center gap-2
+           disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-white/5 text-slate-300 border border-white/10
+           hover:bg-white/10 hover:text-white
+           font-display text-sm px-4 py-2 rounded-lg
+           transition-all duration-200;
+  }
+
+  .result-badge {
+    @apply bg-neon-green/10 text-neon-green border border-neon-green/20
+           font-mono text-lg px-6 py-3 rounded-xl;
+  }
+
+  .label-text {
+    @apply text-xs font-display font-medium text-slate-400 uppercase tracking-wider mb-1.5;
+  }
+
+  .section-title {
+    @apply font-display font-semibold text-white text-lg;
+  }
+
+  .table-cell {
+    @apply px-4 py-2.5 text-sm font-mono text-slate-300 border-b border-white/5;
+  }
+
+  .table-header {
+    @apply px-4 py-2.5 text-xs font-display font-semibold text-neon-cyan/70
+           uppercase tracking-wider border-b border-white/10 bg-dark-800/50;
+  }
+
+  .sidebar-item {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl cursor-pointer
+           transition-all duration-200 font-display text-sm;
+  }
+
+  .sidebar-active {
+    @apply bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/20;
+  }
+
+  .sidebar-inactive {
+    @apply text-slate-400 hover:bg-white/5 hover:text-slate-200;
+  }
+}

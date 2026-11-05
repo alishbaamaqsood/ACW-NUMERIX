@@ -24,14 +24,14 @@ import requests
 
 from run_experiment import TEST_QUERIES
 from answer_quality import judge_answer   # FIXED: actual file name
+TEST_QUERIES = TEST_QUERIES[:3]
 
 
 # API endpoint
 ASK_URL = "http://localhost:8000/api/chatbot/ask"
 
 # Delay between calls
-SLEEP_BETWEEN_CALLS = 1.0
-
+SLEEP_BETWEEN_CALLS = 5.0
 
 # ─────────────────────────────────────────────────────────────────────────────
 # ABLATION CONFIGURATIONS
@@ -199,7 +199,7 @@ def main():
                     f"[{done:03d}/{total}] "
                     f"JUDGE ERROR: {e}"
                 )
-
+                time.sleep(SLEEP_BETWEEN_CALLS)
                 continue
 
             # ─────────────────────────────────────────────────────────────────
@@ -222,6 +222,8 @@ def main():
             }
 
             all_results.append(record)
+            with open("ablation_results.json", "w", encoding="utf-8") as f:
+              json.dump(all_results, f, indent=2, ensure_ascii=False)
 
             print(
                 f"[{done:03d}/{total}] "

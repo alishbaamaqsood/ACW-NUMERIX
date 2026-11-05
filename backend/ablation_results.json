@@ -1,0 +1,200 @@
+[
+  {
+    "config": "cosine_only",
+    "query": "What is the Bisection method?",
+    "token_reduction_pct": 26.39,
+    "chunks_selected": 2,
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately and comprehensively explains the Bisection method using both the reference text and standard mathematical knowledge."
+  },
+  {
+    "config": "cosine_only",
+    "query": "How does Newton-Raphson converge?",
+    "token_reduction_pct": 27.41,
+    "chunks_selected": 2,
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately and comprehensively explains how Newton-Raphson converges based on the reference material."
+  },
+  {
+    "config": "cosine_only",
+    "query": "What is Simpson's 1/3 rule?",
+    "token_reduction_pct": 31.55,
+    "chunks_selected": 2,
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately explains Simpson's 1/3 rule using both general knowledge and the provided reference material."
+  },
+  {
+    "config": "density_only",
+    "query": "What is the Bisection method?",
+    "token_reduction_pct": 34.72,
+    "chunks_selected": 2,
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately explains the Bisection method and incorporates relevant context from the reference material."
+  },
+  {
+    "config": "density_only",
+    "query": "How does Newton-Raphson converge?",
+    "token_reduction_pct": 43.24,
+    "chunks_selected": 2,
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 4.0,
+    "notes": "The answer accurately explains Newton-Raphson convergence, though it incorrectly claims the method is not detailed in the reference module summary when it actually mentions quadratic convergence."
+  },
+  {
+    "config": "density_only",
+    "query": "What is Simpson's 1/3 rule?",
+    "token_reduction_pct": 30.48,
+    "chunks_selected": 2,
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 4.0,
+    "notes": "The answer provides an accurate mathematical explanation of Simpson's 1/3 rule which goes beyond the sparse reference text, but correctly uses the context's mention that the feature exists in the app."
+  },
+  {
+    "config": "alpha_0.3",
+    "query": "What is the Bisection method?",
+    "token_reduction_pct": 34.72,
+    "chunks_selected": 2,
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately and comprehensively explains the Bisection method using both the reference text and standard mathematical principles."
+  },
+  {
+    "config": "alpha_0.3",
+    "query": "How does Newton-Raphson converge?",
+    "token_reduction_pct": 43.24,
+    "chunks_selected": 2,
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately and comprehensively explains how Newton-Raphson converges based on the reference material and general mathematical principles."
+  },
+  {
+    "config": "alpha_0.3",
+    "query": "What is Simpson's 1/3 rule?",
+    "token_reduction_pct": 31.55,
+    "chunks_selected": 2,
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately explains Simpson's 1/3 rule and aligns well with the provided reference material."
+  },
+  {
+    "config": "alpha_0.5",
+    "query": "What is the Bisection method?",
+    "token_reduction_pct": 34.72,
+    "chunks_selected": 2,
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer provides an accurate, complete, and faithful explanation of the Bisection method based on the reference material."
+  },
+  {
+    "config": "alpha_0.5",
+    "query": "How does Newton-Raphson converge?",
+    "token_reduction_pct": 43.24,
+    "chunks_selected": 2,
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately describes how Newton-Raphson converges using both reference material and standard numerical analysis knowledge."
+  },
+  {
+    "config": "alpha_0.5",
+    "query": "What is Simpson's 1/3 rule?",
+    "token_reduction_pct": 31.55,
+    "chunks_selected": 2,
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately explains Simpson's 1/3 rule using the provided reference material."
+  },
+  {
+    "config": "alpha_0.7",
+    "query": "What is the Bisection method?",
+    "token_reduction_pct": 34.72,
+    "chunks_selected": 2,
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately and comprehensively explains the Bisection method using the provided reference material and standard mathematical knowledge."
+  },
+  {
+    "config": "alpha_0.7",
+    "query": "How does Newton-Raphson converge?",
+    "token_reduction_pct": 29.34,
+    "chunks_selected": 2,
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately explains how Newton-Raphson converges using the reference material while adding appropriate standard mathematical context."
+  },
+  {
+    "config": "alpha_0.7",
+    "query": "What is Simpson's 1/3 rule?",
+    "token_reduction_pct": 31.55,
+    "chunks_selected": 2,
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately explains Simpson's 1/3 rule using both the reference material and general mathematical knowledge."
+  },
+  {
+    "config": "alpha_0.9",
+    "query": "What is the Bisection method?",
+    "token_reduction_pct": 34.72,
+    "chunks_selected": 2,
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately and comprehensively explains the Bisection method using both general knowledge and the provided reference material."
+  },
+  {
+    "config": "alpha_0.9",
+    "query": "How does Newton-Raphson converge?",
+    "token_reduction_pct": 27.41,
+    "chunks_selected": 2,
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 5.0,
+    "notes": "The answer accurately describes the convergence and details of the Newton-Raphson method based on the reference material and standard numerical analysis principles."
+  },
+  {
+    "config": "alpha_0.9",
+    "query": "What is Simpson's 1/3 rule?",
+    "token_reduction_pct": 31.55,
+    "chunks_selected": 2,
+    "correctness": 5.0,
+    "relevance": 5.0,
+    "completeness": 5.0,
+    "faithfulness": 4.0,
+    "notes": "The answer provides accurate information about Simpson's 1/3 rule while appropriately integrating the reference material, though it includes minor standard mathematical context not explicitly stated in the brief reference snippet."
+  }
+]

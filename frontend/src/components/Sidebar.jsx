@@ -70,7 +70,7 @@ export default function Sidebar({ active, setActive, mobileOpen, setMobileOpen }
         <div className="px-3 mt-6 pt-4 border-t border-white/5">
           <p className="text-xs text-slate-600 font-mono leading-relaxed">
             Numerical Analysis Project<br />
-            <span className="text-neon-cyan/40">BSE-6C · Bahria University</span>
+            <span className="text-neon-cyan/40">BSE-7C · Bahria University</span>
           </p>
         </div>
       </aside>

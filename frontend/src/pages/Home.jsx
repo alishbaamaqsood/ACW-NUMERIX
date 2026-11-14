@@ -24,7 +24,7 @@ export default function Home({ setActive }) {
       <div className="text-center py-16 px-4">
         <div className="inline-flex items-center gap-2 bg-neon-cyan/5 border border-neon-cyan/15 rounded-full px-4 py-1.5 mb-6">
           <span className="w-1.5 h-1.5 rounded-full bg-neon-cyan animate-pulse" />
-          <span className="text-xs font-mono text-neon-cyan/70">Numerical Analysis · BSE-6C · BU Karachi</span>
+          <span className="text-xs font-mono text-neon-cyan/70">Numerical Analysis · BSE-7C · BU Karachi</span>
         </div>
 
         <h1 className="font-display font-bold text-5xl md:text-6xl text-white mb-4 leading-tight">
@@ -32,7 +32,7 @@ export default function Home({ setActive }) {
         </h1>
 
         <p className="text-slate-400 text-lg font-body max-w-xl mx-auto leading-relaxed mb-10">
-          An interactive platform implementing 13 labs of numerical methods — 
+          An interactive platform implementing 13 labs of numerical methods 
           visualize, compute, and understand algorithms in real time.
         </p>
 
